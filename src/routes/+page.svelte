@@ -1,12 +1,8 @@
 <script lang="ts">
 	import Message from '@feltcoop/felt/ui/Message.svelte';
 
-	import {exports} from '$lib/exports';
-	import {stripStart} from '$lib/string';
-
-	// TODO glob import and print API?
-
-	const exps = exports.map((e) => `@feltcoop/util/${stripStart(e, 'lib/')}`).filter(Boolean);
+	import manifest from '$lib/manifest.json';
+	import Manifest from '$lib/Manifest.svelte';
 </script>
 
 <main class="column">
@@ -29,13 +25,7 @@
 		>
 	</section>
 	<section class="padded-xl">
-		{#each exps as exp, i}<li class="markup">
-				<code class="padded-sm"
-					>import {'{'}...} from '<a
-						href="https://github.com/feltcoop/util/blob/main/src/{exports[i]}">{exp.trim()}</a
-					>'</code
-				>
-			</li>{/each}
+		<Manifest {manifest} />
 	</section>
 	<footer class="centered">
 		<a href="https://github.com/feltcoop/util" title="source code on github">🐙😺</a>
@@ -58,5 +48,6 @@
 	}
 	footer > *:first-child {
 		font-size: var(--font_size_xl5);
+		margin-bottom: var(--spacing_xl5);
 	}
 </style>

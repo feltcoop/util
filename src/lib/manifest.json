@@ -1,0 +1,347 @@
+{
+	"exports": [
+		{"file": "lib/index.ts", "identifiers": []},
+		{
+			"file": "lib/array.ts",
+			"identifiers": [
+				{"name": "EMPTY_ARRAY", "type": "any[]"},
+				{"name": "toArray", "type": "<T>(value: T | T[]): T[]"},
+				{"name": "removeUnordered", "type": "(array: any[], index: number): void"},
+				{"name": "toNext", "type": "<T>(array: T[]): (() => T)"}
+			]
+		},
+		{
+			"file": "lib/async.ts",
+			"identifiers": [
+				{"name": "AsyncStatus", "type": "\"initial\" | \"pending\" | \"success\" | \"failure\""},
+				{"name": "wait", "type": "(duration = 0): Promise<void>"}
+			]
+		},
+		{
+			"file": "lib/counter.ts",
+			"identifiers": [
+				{"name": "Counter"},
+				{"name": "ToCounter"},
+				{"name": "toCounter", "type": "ToCounter"}
+			]
+		},
+		{
+			"file": "lib/dom.ts",
+			"identifiers": [
+				{"name": "isEditable", "type": "(el: any): boolean"},
+				{
+					"name": "swallow",
+					"type": "<T extends Event>(event: T, immediate = true, preventDefault = true): T"
+				}
+			]
+		},
+		{
+			"file": "lib/env.ts",
+			"identifiers": [
+				{"name": "env", "type": "Record<string, any>"},
+				{"name": "ToEnvString"},
+				{"name": "toEnvString", "type": "ToEnvString"},
+				{"name": "ToEnvNumber"},
+				{"name": "toEnvNumber", "type": "ToEnvNumber"}
+			]
+		},
+		{"file": "lib/error.ts", "identifiers": [{"name": "UnreachableError"}]},
+		{
+			"file": "lib/function.ts",
+			"identifiers": [
+				{"name": "noop", "type": "(...args: any[]) => void"},
+				{"name": "identity", "type": "<T>(t: T): T"},
+				{"name": "Lazy"},
+				{"name": "lazy", "type": "<T>(value: T | Lazy<T>): T"}
+			]
+		},
+		{
+			"file": "lib/id.ts",
+			"identifiers": [
+				{"name": "Uuid", "type": "Flavored<string, \"Uuid\">"},
+				{"name": "isUuid", "type": "(str: string): str is Uuid"},
+				{"name": "uuidMatcher"},
+				{"name": "ClientId", "type": "Flavored<string, \"ClientId\">"},
+				{"name": "ToClientId"},
+				{
+					"name": "toToClientId",
+					"type": "(name: string, count?: number, separator = \"_\"): ToClientId"
+				}
+			]
+		},
+		{
+			"file": "lib/json.ts",
+			"identifiers": [
+				{
+					"name": "Json",
+					"type": "string | number | boolean | null | {\n    [prop: string]: Json;\n} | Json[]"
+				},
+				{
+					"name": "JsonType",
+					"type": "\"string\" | \"number\" | \"boolean\" | \"null\" | \"object\" | \"array\""
+				},
+				{"name": "getJsonType", "type": "(value: Json): JsonType | undefined"}
+			]
+		},
+		{
+			"file": "lib/log.ts",
+			"identifiers": [
+				{"name": "LogLevel"},
+				{"name": "parseLogLevel", "type": "(logLevel: unknown): LogLevel | undefined"},
+				{"name": "ENV_LOG_LEVEL"},
+				{"name": "DEFAULT_LOG_LEVEL"},
+				{"name": "Log", "type": "(...args: any[]) => void"},
+				{"name": "LoggerState"},
+				{"name": "LogLevelDefaults"},
+				{"name": "BaseLogger"},
+				{"name": "resolveValues", "type": "(...arrays: any[]): any[]"},
+				{"name": "Logger"},
+				{"name": "SystemLogger"},
+				{
+					"name": "configureLogLevel",
+					"type": "(level: LogLevel, configureMainLogger = true, configureSystemLogger = true): void"
+				},
+				{"name": "printLogLabel", "type": "(label: string, color = magenta): string"}
+			]
+		},
+		{
+			"file": "lib/map.ts",
+			"identifiers": [
+				{
+					"name": "sortMap",
+					"type": "<T extends Map<any, any>>(map: T, comparator = compareSimpleMapEntries): T"
+				},
+				{
+					"name": "compareSimpleMapEntries",
+					"type": "(a: [\n    any,\n    any\n], b: [\n    any,\n    any\n]): number"
+				}
+			]
+		},
+		{
+			"file": "lib/maths.ts",
+			"identifiers": [
+				{"name": "clamp", "type": "(n: number, min: number, max: number): number"},
+				{"name": "lerp", "type": "(a: number, b: number, amount: number): number"},
+				{"name": "round", "type": "(n: number, decimals: number): number"},
+				{"name": "GR"},
+				{"name": "GRi"},
+				{"name": "GR2"},
+				{"name": "GR2i"},
+				{"name": "GR3"},
+				{"name": "GR3i"},
+				{"name": "GR4"},
+				{"name": "GR4i"},
+				{"name": "GR5"},
+				{"name": "GR5i"},
+				{"name": "GR6"},
+				{"name": "GR6i"},
+				{"name": "GR7"},
+				{"name": "GR7i"},
+				{"name": "GR8"},
+				{"name": "GR8i"},
+				{"name": "GR9"},
+				{"name": "GR9i"}
+			]
+		},
+		{
+			"file": "lib/object.ts",
+			"identifiers": [
+				{
+					"name": "mapRecord",
+					"type": "<T, K extends string | number, U>(obj: Record<K, T>, mapper: (value: T, key: string) => U): Record<K, U>"
+				},
+				{
+					"name": "omit",
+					"type": "<T extends Record<K, any>, K extends keyof T>(obj: T, keys: K[]): OmitStrict<T, K>"
+				},
+				{
+					"name": "pickBy",
+					"type": "<T extends Record<K, any>, K extends string | number>(obj: T, shouldPick: (value: any, key: K) => boolean): Partial<T>"
+				},
+				{"name": "omitUndefined", "type": "<T extends Record<string | number, any>>(obj: T): T"},
+				{
+					"name": "reorder",
+					"type": "<T extends Record<K, any>, K extends string | number>(obj: T, keys: K[]): T"
+				},
+				{"name": "nulls", "type": "{\n    [key: string]: null;\n}"},
+				{"name": "undefineds", "type": "{\n    [key: string]: undefined;\n}"},
+				{"name": "EMPTY_OBJECT", "type": "Record<string | number | symbol, any>"},
+				{
+					"name": "traverse",
+					"type": "(obj: any, cb: (key: string, value: any, obj: any) => void): void"
+				}
+			]
+		},
+		{
+			"file": "lib/obtainable.ts",
+			"identifiers": [
+				{"name": "Unobtain", "type": "() => void"},
+				{
+					"name": "toObtainable",
+					"type": "<T>(toObtainableValue: () => T, teardownObtainableValue?: (obtainable: T) => unknown): (() => [\n    T,\n    Unobtain\n])"
+				}
+			]
+		},
+		{
+			"file": "lib/path.ts",
+			"identifiers": [
+				{"name": "stripTrailingSlash", "type": "(p: string): string"},
+				{"name": "replaceExtension", "type": "(path: string, newExtension: string): string"},
+				{"name": "toPathStem", "type": "(path: string): string"},
+				{"name": "toCommonBaseDir", "type": "(filePaths: string[]): string"}
+			]
+		},
+		{
+			"file": "lib/path-parsing.ts",
+			"identifiers": [
+				{"name": "toPathParts", "type": "(path: string): string[]"},
+				{"name": "toPathSegments", "type": "(path: string): string[]"},
+				{"name": "toPathPieces", "type": "(rawPath: string): PathPiece[]"},
+				{
+					"name": "PathPiece",
+					"type": "{\n    type: \"piece\";\n    path: string;\n    name: string;\n} | {\n    type: \"separator\";\n    path: string;\n}"
+				}
+			]
+		},
+		{
+			"file": "lib/print.ts",
+			"identifiers": [
+				{"name": "printKeyValue", "type": "(key: string, val: string | number): string"},
+				{"name": "printMs", "type": "(ms: number, decimals?: number | undefined): string"},
+				{"name": "printCauses", "type": "(solutions: string[]): string"},
+				{"name": "printString", "type": "(v: string): string"},
+				{"name": "printNumber", "type": "(v: number): string"},
+				{"name": "printBoolean", "type": "(v: boolean): string"},
+				{"name": "printValue", "type": "(value: unknown): string"},
+				{"name": "printError", "type": "(err: Error): string"},
+				{"name": "printTiming", "type": "(key: string | number, timing: number): string"},
+				{"name": "printTimings", "type": "(timings: Timings, log: Logger): void"}
+			]
+		},
+		{
+			"file": "lib/process.ts",
+			"identifiers": [
+				{"name": "log"},
+				{"name": "SpawnedProcess"},
+				{
+					"name": "SpawnResult",
+					"type": "Result<{\n    signal: NodeJS.Signals | null;\n}, {\n    signal: NodeJS.Signals | null;\n    code: number | null;\n}>"
+				},
+				{"name": "printChildProcess", "type": "(child: ChildProcess): string"},
+				{"name": "globalSpawn", "type": "Set<ChildProcess>"},
+				{"name": "registerGlobalSpawn", "type": "(child: ChildProcess): (() => void)"},
+				{"name": "despawn", "type": "(child: ChildProcess): Promise<SpawnResult>"},
+				{"name": "attachProcessErrorHandlers", "type": "(toErrorLabel?: ToErrorLabel): void"},
+				{
+					"name": "handleFatalError",
+					"type": "async (err: Error, label = \"handleFatalError\"): Promise<void>"
+				},
+				{"name": "handleUnhandledRejection"},
+				{"name": "ToErrorLabel"},
+				{
+					"name": "spawnProcess",
+					"type": "(command: string, args: readonly string[] = [], options?: SpawnOptions): SpawnedProcess"
+				},
+				{
+					"name": "spawn",
+					"type": "(...args: Parameters<typeof spawnProcess>): Promise<SpawnResult>"
+				},
+				{"name": "printSpawnResult", "type": "(result: SpawnResult): string"},
+				{"name": "RestartableProcess"},
+				{
+					"name": "spawnRestartableProcess",
+					"type": "(command: string, args: readonly string[] = [], options?: SpawnOptions): RestartableProcess"
+				}
+			]
+		},
+		{
+			"file": "lib/random.ts",
+			"identifiers": [
+				{"name": "randomFloat", "type": "(min: number, max: number, random = Math.random): number"},
+				{"name": "randomInt", "type": "(min: number, max: number, random = Math.random): number"},
+				{"name": "randomBool", "type": "(random = Math.random): boolean"},
+				{"name": "randomItem", "type": "<T>(arr: T[], random = Math.random): T"}
+			]
+		},
+		{
+			"file": "lib/random-alea.ts",
+			"identifiers": [
+				{"name": "Alea"},
+				{"name": "toRandomAlea", "type": "(...args: unknown[]): Alea"},
+				{"name": "Mash"},
+				{"name": "toMash", "type": "(): Mash"}
+			]
+		},
+		{
+			"file": "lib/result.ts",
+			"identifiers": [
+				{
+					"name": "Result",
+					"type": "({\n    ok: true;\n} & TValue) | ({\n    ok: false;\n} & TError)"
+				},
+				{"name": "OK"},
+				{"name": "NOT_OK"},
+				{
+					"name": "unwrap",
+					"type": "<TValue extends {\n    value?: unknown;\n}, TError extends {\n    message?: string;\n}>(result: Result<TValue, TError>, message?: string): TValue[\"value\"]"
+				},
+				{"name": "ResultError"},
+				{
+					"name": "unwrapError",
+					"type": "<TError extends object>(result: Result<object, TError>, message = \"Failed to unwrap result error\"): {\n    ok: false;\n} & TError"
+				}
+			]
+		},
+		{
+			"file": "lib/regexp.ts",
+			"identifiers": [{"name": "escapeRegexp", "type": "(str: string): string"}]
+		},
+		{
+			"file": "lib/string.ts",
+			"identifiers": [
+				{"name": "truncate", "type": "(str: string, maxLength: number, suffix = \"...\"): string"},
+				{"name": "stripStart", "type": "(source: string, stripped: string): string"},
+				{"name": "stripEnd", "type": "(source: string, stripped: string): string"},
+				{"name": "stripAfter", "type": "(source: string, stripped: string): string"},
+				{"name": "stripBefore", "type": "(source: string, stripped: string): string"},
+				{"name": "ensureStart", "type": "(source: string, ensured: string): string"},
+				{"name": "ensureEnd", "type": "(source: string, ensured: string): string"},
+				{"name": "deindent", "type": "(str: string): string"},
+				{"name": "plural", "type": "(count: number | undefined | null, suffix = \"s\"): string"},
+				{"name": "toGraphemeCount", "type": "(str: string): number"}
+			]
+		},
+		{
+			"file": "lib/timings.ts",
+			"identifiers": [
+				{"name": "Stopwatch"},
+				{"name": "createStopwatch", "type": "(decimals = 2): Stopwatch"},
+				{"name": "Timings"}
+			]
+		},
+		{
+			"file": "lib/types.ts",
+			"identifiers": [
+				{"name": "OmitStrict", "type": "Pick<T, Exclude<keyof T, K>>"},
+				{
+					"name": "PartialExcept",
+					"type": "{\n    [P in K]: T[P];\n} & {\n    [P in Exclude<keyof T, K>]?: T[P];\n}"
+				},
+				{
+					"name": "PartialOnly",
+					"type": "{\n    [P in K]?: T[P];\n} & {\n    [P in Exclude<keyof T, K>]: T[P];\n}"
+				},
+				{"name": "PartialValues", "type": "{\n    [P in keyof T]: Partial<T[P]>;\n}"},
+				{"name": "Assignable", "type": "{\n    -readonly [P in K]: T[P];\n}"},
+				{"name": "Defined", "type": "T extends undefined ? never : T"},
+				{"name": "NotNull", "type": "T extends null ? never : T"},
+				{"name": "Branded", "type": "TValue & Brand<TName>"},
+				{"name": "Flavored", "type": "TValue & Flavor<TName>"},
+				{"name": "BrandedSymbol", "type": "unique symbol"},
+				{"name": "FlavoredSymbol", "type": "unique symbol"},
+				{"name": "Brand"},
+				{"name": "Flavor"}
+			]
+		}
+	]
+}
